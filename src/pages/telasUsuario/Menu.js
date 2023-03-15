@@ -1,11 +1,12 @@
 import styled from "styled-components"
+import { Link } from "react-router-dom"
 
 export default function Menu(){
     return(
         <MenuLayout>
-            <Botao>Hábitos</Botao>
-            <BotaoProgresso>Hoje</BotaoProgresso>
-            <Botao>Historico</Botao>
+            <Link to="/habitos"><Botao>Hábitos</Botao></Link>
+            <Link to="/hoje"><BotaoProgresso>Hoje</BotaoProgresso></Link>
+            <Link to="/historico"><Botao>Historico</Botao></Link>
         </MenuLayout>
     )
 }

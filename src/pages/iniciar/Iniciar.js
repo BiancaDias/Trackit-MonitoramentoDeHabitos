@@ -1,15 +1,17 @@
-import { useState } from "react";
+import { useContext, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../../images/logo.svg"
 import axios from "axios";
 import { ThreeDots } from 'react-loader-spinner';
+import Usuario from "../../Usuario";
 
 export default function Iniciar(){
     const [password, setPassword] = useState();
     const [email, setEmail] = useState();
-    const [loading, setLoading] = useState(false);
     const [habilitado, SetHabilitado] = useState(false);
+    const [informacoesUsuario, setInformacoesUsuario] = useContext(Usuario)
+
     const navigate = useNavigate();
     const url = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login";
     function login(e){
@@ -18,6 +20,7 @@ export default function Iniciar(){
         const promisse = axios.post(url, body);
         SetHabilitado(true)
         promisse.then(e => {
+            setInformacoesUsuario(e.data)
             navigate("/hoje")
         })
         promisse.catch(r =>{

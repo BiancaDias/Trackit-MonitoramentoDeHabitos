@@ -36,6 +36,7 @@ export default function Cadastro(){
                     id="email"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
+                    disabled={habilitado}
                     required
                 />
                 <input 
@@ -44,6 +45,7 @@ export default function Cadastro(){
                     id="password"
                     value={password}
                     onChange={e => setPassword(e.target.value)}
+                    disabled={habilitado}
                     required
                 />
                 <input 
@@ -52,6 +54,7 @@ export default function Cadastro(){
                     id="name"
                     value={name}
                     onChange={e => setName(e.target.value)}
+                    disabled={habilitado}
                     required
                 />
                 <input 
@@ -60,6 +63,7 @@ export default function Cadastro(){
                     id="image"
                     value={image}
                     onChange={e => setImage(e.target.value)}
+                    disabled={habilitado}
                     required
                 />
 
