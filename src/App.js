@@ -1,25 +1,26 @@
-import logo from './logo.svg';
-import './App.css';
+import Iniciar from "./pages/iniciar/Iniciar";
+import styled from "styled-components";
+import Cadastro from "./pages/iniciar/Cadastro";
+import Habitos from "./pages/telasUsuario/Habitos";
+import Hoje from "./pages/telasUsuario/Hoje";
+import Historico from "./pages/telasUsuario/Historico";
 
-function App() {
+export default function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <>
+      <Iniciar/>
+      {/* <Cadastro/> */}
+      {/* <Habitos/> */}
+      {/* <Hoje/> */}
+      {/* <Historico/> */}
+    </>
   );
 }
 
-export default App;
+// const AppContainer = styled.div`
+//   background-color: red;
+//   position: absolute;
+//   top: 50%;
+//   left: 50%;
+//   transform: translate(-50%, -50%);
+// `
