@@ -1,16 +1,55 @@
+import { useState } from "react";
+import { Link, useNavigate } from "react-router-dom";
 import styled from "styled-components";
 import logo from "../../images/logo.svg"
+import axios from "axios";
+import { ThreeDots } from 'react-loader-spinner';
 
 export default function Iniciar(){
+    const [password, setPassword] = useState();
+    const [email, setEmail] = useState();
+    const [loading, setLoading] = useState(false);
+    const [habilitado, SetHabilitado] = useState(false);
+    const navigate = useNavigate();
+    const url = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/login";
+    function login(e){
+        e.preventDefault();
+        const body = {email, password};
+        const promisse = axios.post(url, body);
+        SetHabilitado(true)
+        promisse.then(e => {
+            navigate("/hoje")
+        })
+        promisse.catch(r =>{
+            SetHabilitado(false)
+            alert("deu ruim")
+        })
+    }
     return(
         <ContainerIniciar >
             <img src={logo} alt="Trackit"/>
-            <Formulario>
-                <input placeholder="email"/>
-                <input placeholder="senha"/>
-                <button>Entrar</button>
+            <Formulario onSubmit={login}>
+                <input 
+                    placeholder="email"
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    disabled={habilitado}
+                    required
+                />
+                <input 
+                    placeholder="senha"
+                    type="password"
+                    id="password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    disabled={habilitado}
+                    required
+                />
+                <button disabled={habilitado}>{habilitado === true? <ThreeDots color="#FFFFFF" height="50px" width="50px"/>: "Entrar"}</button>
             </Formulario>
-            <Cadastro>Não tem uma conta? Cadastre-se!</Cadastro>
+            <Link to={"/cadastro"}><Cadastro>Não tem uma conta? Cadastre-se!</Cadastro></Link>
         </ContainerIniciar>
     )
 }
@@ -63,6 +102,9 @@ const Formulario = styled.form`
         text-align: center;
         color: #FFFFFF;
         margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 `
 

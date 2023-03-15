@@ -1,18 +1,71 @@
 import logo from "../../images/logo.svg"
 import styled from "styled-components";
+import { useState } from "react";
+import axios from "axios";
+import { Link, useNavigate } from "react-router-dom";
+import { ThreeDots } from 'react-loader-spinner';
 
 export default function Cadastro(){
+    const [email, setEmail] = useState();
+    const [name, setName] = useState();
+    const [image, setImage] = useState();
+    const [password, setPassword] = useState()
+    const navigate = useNavigate();
+    const [habilitado, SetHabilitado] = useState(false);
+
+    const url = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/auth/sign-up"
+    function cadastrar(e){
+        e.preventDefault()
+        const body = {email, name, image, password};
+        const promisse = axios.post(url, body);
+        SetHabilitado(true)
+        promisse.then(r =>{ 
+            navigate("/")})
+        promisse.catch(r =>{ 
+            SetHabilitado(false)
+            alert("deu ruim")})
+    }
+
     return(
         <ContainerCadastro >
             <img src={logo} alt="Trackit"/>
-            <Formulario>
-                <input placeholder="email"/>
-                <input placeholder="senha"/>
-                <input placeholder="nome"/>
-                <input placeholder="foto"/>
-                <button>Cadastrar</button>
+            <Formulario onSubmit={cadastrar}>
+                <input 
+                    placeholder="email"
+                    type="email"
+                    id="email"
+                    value={email}
+                    onChange={e => setEmail(e.target.value)}
+                    required
+                />
+                <input 
+                    placeholder="senha"
+                    type="password"
+                    id="password"
+                    value={password}
+                    onChange={e => setPassword(e.target.value)}
+                    required
+                />
+                <input 
+                    placeholder="nome"
+                    type="text"
+                    id="name"
+                    value={name}
+                    onChange={e => setName(e.target.value)}
+                    required
+                />
+                <input 
+                    placeholder="foto"
+                    type="url"
+                    id="image"
+                    value={image}
+                    onChange={e => setImage(e.target.value)}
+                    required
+                />
+
+                <button disabled={habilitado}>{habilitado === true? <ThreeDots color="#FFFFFF" height="50px" width="50px"/>: "Cadastrar"}</button>
             </Formulario>
-            <Loguin>Já tem uma conta? Faça login!</Loguin>
+            <Link to={"/"}><Loguin>Já tem uma conta? Faça login!</Loguin></Link>
         </ContainerCadastro>
     );
 }
@@ -66,6 +119,9 @@ const Formulario = styled.form`
         text-align: center;
         color: #FFFFFF;
         margin-bottom: 25px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
     }
 `
 
