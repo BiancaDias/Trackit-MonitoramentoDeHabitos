@@ -33,6 +33,7 @@ export default function Iniciar(){
             <img src={logo} alt="Trackit"/>
             <Formulario onSubmit={login}>
                 <input 
+                    data-test="email-input"
                     placeholder="email"
                     type="email"
                     id="email"
@@ -42,6 +43,7 @@ export default function Iniciar(){
                     required
                 />
                 <input 
+                    data-test="password-input"
                     placeholder="senha"
                     type="password"
                     id="password"
@@ -50,9 +52,9 @@ export default function Iniciar(){
                     disabled={habilitado}
                     required
                 />
-                <button disabled={habilitado}>{habilitado === true? <ThreeDots color="#FFFFFF" height="13px" width="51px"/>: "Entrar"}</button>
+                <button data-test="login-btn" disabled={habilitado}>{habilitado === true? <ThreeDots color="#FFFFFF" height="13px" width="51px"/>: "Entrar"}</button>
             </Formulario>
-            <Link to={"/cadastro"}><Cadastro>Não tem uma conta? Cadastre-se!</Cadastro></Link>
+            <Link data-test="signup-link" to={"/cadastro"}><Cadastro>Não tem uma conta? Cadastre-se!</Cadastro></Link>
         </ContainerIniciar>
     )
 }

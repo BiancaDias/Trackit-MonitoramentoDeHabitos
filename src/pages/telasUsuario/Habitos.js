@@ -53,7 +53,7 @@ export default function Habitos(){
         <HabitosLayout>
         <TopoPagina>
             <h1>Meus hábitos</h1>
-            <button onClick={addHabito}>+</button>
+            <button data-test="habit-create-btn" onClick={addHabito}>+</button>
         </TopoPagina>
         <CriaHabitos visualizaCriaHabito={visualizaCriaHabito} setVisualizaCriaHabito={setVisualizaCriaHabito} cancelaAddHabito={cancelaAddHabito} setVisualizaHabitos={setVisualizaHabitos} listaHabitos={listaHabitos} setListaHabitos={setListaHabitos} />
 
@@ -61,13 +61,13 @@ export default function Habitos(){
         <ContainerHabitos visualizaHabitos={visualizaHabitos}>
             {listaHabitos.map((habito)=>{
             return(
-            <HabitosRegistrados  key={habito.id}>
+            <HabitosRegistrados data-test="habit-container" key={habito.id}>
                 <Container>
-                    <p>{habito.name}</p>
-                    <img onClick={()=>deletaHabito(habito.id)} src={excluir} alt="deletar habito"/>
+                    <p data-test="habit-name">{habito.name}</p>
+                    <img data-test="habit-delete-btn" onClick={()=>deletaHabito(habito.id)} src={excluir} alt="deletar habito"/>
                 </Container>
                 <BotoesAgrupados>
-                    {days.map((d, indice) => <Botoes selecionados={habito.days} id={indice}>{d}</Botoes>)}
+                    {days.map((d, indice) => <Botoes data-test="habit-day" selecionados={habito.days} key={indice} id={indice}>{d}</Botoes>)}
                 </BotoesAgrupados>
             </HabitosRegistrados>)
         })}

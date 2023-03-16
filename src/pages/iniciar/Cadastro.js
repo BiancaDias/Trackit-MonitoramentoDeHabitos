@@ -31,6 +31,7 @@ export default function Cadastro(){
             <img src={logo} alt="Trackit"/>
             <Formulario onSubmit={cadastrar}>
                 <input 
+                    data-test="email-input"
                     placeholder="email"
                     type="email"
                     id="email"
@@ -40,6 +41,7 @@ export default function Cadastro(){
                     required
                 />
                 <input 
+                    data-test="password-input"
                     placeholder="senha"
                     type="password"
                     id="password"
@@ -49,6 +51,7 @@ export default function Cadastro(){
                     required
                 />
                 <input 
+                    data-test="user-name-input"
                     placeholder="nome"
                     type="text"
                     id="name"
@@ -58,6 +61,7 @@ export default function Cadastro(){
                     required
                 />
                 <input 
+                    data-test="user-image-input"
                     placeholder="foto"
                     type="url"
                     id="image"
@@ -67,9 +71,9 @@ export default function Cadastro(){
                     required
                 />
 
-                <button disabled={habilitado}>{habilitado === true? <ThreeDots color="#FFFFFF" height="50px" width="50px"/>: "Cadastrar"}</button>
+                <button data-test="signup-btn" disabled={habilitado}>{habilitado === true? <ThreeDots color="#FFFFFF" height="50px" width="50px"/>: "Cadastrar"}</button>
             </Formulario>
-            <Link to={"/"}><Loguin>Já tem uma conta? Faça login!</Loguin></Link>
+            <Link data-test="login-link" to={"/"}><Loguin>Já tem uma conta? Faça login!</Loguin></Link>
         </ContainerCadastro>
     );
 }

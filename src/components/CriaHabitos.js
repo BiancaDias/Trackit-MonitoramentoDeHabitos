@@ -44,8 +44,9 @@ export default function CriaHabitos({visualizaCriaHabito,setVisualizaCriaHabito,
         });
     }
     return(
-        <CriaHabito onSubmit={salvaHabito} visualizaCriaHabito={visualizaCriaHabito}>
+        <CriaHabito data-test="habit-create-container" onSubmit={salvaHabito} visualizaCriaHabito={visualizaCriaHabito}>
             <input 
+                data-test="habit-name-input"
                 type="text" 
                 name="novoHabito" 
                 placeholder="nome do hábito"
@@ -56,11 +57,11 @@ export default function CriaHabitos({visualizaCriaHabito,setVisualizaCriaHabito,
                 required
             />
             <BotoesAgrupados >
-                {days.map((d, indice) => <Botoes diasSelecionados={diasSelecionados} onClick={()=>selecionaDias(indice)} key={indice} id={indice}>{d}</Botoes>)}
+                {days.map((d, indice) => <Botoes data-test="habit-day" diasSelecionados={diasSelecionados} onClick={()=>selecionaDias(indice)} key={indice} id={indice}>{d}</Botoes>)}
             </BotoesAgrupados>
             <CancelarSalvar>
-                <BotaoCancelar disabled={habilitado} onClick={cancelaAddHabito}>Cancelar</BotaoCancelar>
-                <BotaoSalvar disabled={habilitado} type="submit">{habilitado === true? <ThreeDots color="#FFFFFF" height="10px" width="43px"/>: "Salvar"}</BotaoSalvar>
+                <BotaoCancelar data-test="habit-create-cancel-btn" disabled={habilitado} onClick={cancelaAddHabito}>Cancelar</BotaoCancelar>
+                <BotaoSalvar data-test="habit-create-save-btn" disabled={habilitado} type="submit">{habilitado === true? <ThreeDots color="#FFFFFF" height="10px" width="43px"/>: "Salvar"}</BotaoSalvar>
             </CancelarSalvar>
 
         </CriaHabito>

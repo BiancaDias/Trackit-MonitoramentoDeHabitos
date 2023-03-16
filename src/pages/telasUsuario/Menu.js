@@ -3,10 +3,10 @@ import { Link } from "react-router-dom"
 
 export default function Menu(){
     return(
-        <MenuLayout>
-            <Link to="/habitos"><Botao>Hábitos</Botao></Link>
-            <Link to="/hoje"><BotaoProgresso>Hoje</BotaoProgresso></Link>
-            <Link to="/historico"><Botao>Historico</Botao></Link>
+        <MenuLayout data-test="menu">
+            <Link data-test="habit-link" to="/habitos"><Botao>Hábitos</Botao></Link>
+            <Link data-test="today-link" to="/hoje"><BotaoProgresso>Hoje</BotaoProgresso></Link>
+            <Link data-test="history-link" to="/historico"><Botao>Historico</Botao></Link>
         </MenuLayout>
     )
 }

@@ -5,7 +5,7 @@ import { useContext } from "react"
 export default function Topo(){
     const [informacoesUsuario, setInformacoesUsuario] = useContext(Usuario)
     return(
-        <Container>
+        <Container  data-test="header">
             <p>TrackIt</p>
             <img src={informacoesUsuario.image} alt="imagem usuario"/>
         </Container>
