@@ -50,7 +50,7 @@ export default function Iniciar(){
                     disabled={habilitado}
                     required
                 />
-                <button disabled={habilitado}>{habilitado === true? <ThreeDots color="#FFFFFF" height="50px" width="50px"/>: "Entrar"}</button>
+                <button disabled={habilitado}>{habilitado === true? <ThreeDots color="#FFFFFF" height="13px" width="51px"/>: "Entrar"}</button>
             </Formulario>
             <Link to={"/cadastro"}><Cadastro>Não tem uma conta? Cadastre-se!</Cadastro></Link>
         </ContainerIniciar>
@@ -108,6 +108,10 @@ const Formulario = styled.form`
         display: flex;
         align-items: center;
         justify-content: center;
+            :disabled{
+                background: #52B6FF;
+                opacity: 0.7;
+            }
     }
 `
 
