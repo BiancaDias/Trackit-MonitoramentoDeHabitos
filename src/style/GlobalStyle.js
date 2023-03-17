@@ -12,6 +12,12 @@ const GlobalStyle = createGlobalStyle`
 			background-color: lightgray;
 		}
 	}
+	input{
+		font-family: 'Lexend Deca';
+		color: #666666;
+		font-weight: 400;
+		font-size: 19.976px;
+	}
 
 `
 

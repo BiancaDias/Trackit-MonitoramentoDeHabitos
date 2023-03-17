@@ -91,17 +91,17 @@ const CriaHabito = styled.form`
         width: 100%;
         height: 45px;
         margin-bottom: 8px;
+        padding-left: 11px;
     ::placeholder {
         width: 153px;
         height: 25px;
         padding: 10px;
-
         font-style: normal;
         font-weight: 400;
         font-size: 19.976px;
         line-height: 25px;
         color: #DBDBDB;
-}
+    }
     }
 `
 
