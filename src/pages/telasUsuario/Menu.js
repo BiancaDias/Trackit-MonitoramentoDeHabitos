@@ -1,11 +1,36 @@
 import styled from "styled-components"
 import { Link } from "react-router-dom"
+import { CircularProgressbar } from 'react-circular-progressbar';
+import 'react-circular-progressbar/dist/styles.css';
+import Progresso from "../../Progresso";
+import { useContext } from 'react';
+
 
 export default function Menu(){
+    const [progresso, setProgresso] = useContext(Progresso);
+    console.log(progresso)
     return(
         <MenuLayout data-test="menu">
             <Link data-test="habit-link" to="/habitos"><Botao>Hábitos</Botao></Link>
-            <Link data-test="today-link" to="/hoje"><BotaoProgresso>Hoje</BotaoProgresso></Link>
+            <Link data-test="today-link" to="/hoje">
+                    <BotaoProgresso>
+                    <StyledCircularProgressbar
+                        value = {progresso}
+                        text={"Hoje"}
+                        styles={{
+                            path: {
+                                stroke: `rgba(255, 255, 255, 1)`,
+                            },
+                            trail: {
+                                stroke: '#52B6FF',
+                            },
+                            text: {
+                                fill: '#FFFFFF',
+                              }
+                        }}
+                    />
+                </BotaoProgresso>
+                </Link>
             <Link data-test="history-link" to="/historico"><Botao>Historico</Botao></Link>
         </MenuLayout>
     )
@@ -26,7 +51,7 @@ const MenuLayout = styled.div`
 `
 
 const Botao = styled.button`
-color: #52B6FF;
+    color: #52B6FF;
     font-weight: 400;
     font-size: 15.976px;
     line-height: 20px;
@@ -48,4 +73,21 @@ const BotaoProgresso = styled.button`
     color: #FFFFFF;
     margin-bottom: 40px;
     font-family: 'Lexend Deca';
+`
+
+const StyledCircularProgressbar = styled(CircularProgressbar)`
+width: 80px;
+  height: 80px;
+ .CircularProgressbar-path {
+    stroke-width: 8px;
+  }
+
+  .CircularProgressbar-text {
+    font-weight: 400;
+    font-size: 20px;
+  }
+
+  .CircularProgressbar-trail {
+    stroke-width: 8px;
+  }
 `

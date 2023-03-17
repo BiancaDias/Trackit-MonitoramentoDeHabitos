@@ -1,6 +1,7 @@
 import axios from "axios";
 import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
+import Progresso from "../../Progresso";
 import Usuario from "../../Usuario";
 import Menu from "./Menu";
 import Topo from "./Topo";
@@ -16,6 +17,7 @@ export default function Hoje(){
     const [habitosDeHoje, setHabitosDeHoje] = useState([])
     const [habitosConcluidos, setHabitosConcluidos]= useState(0);
     const [porcentagemConcluida,setPorcentagemConcluida] = useState(0);
+    const [progresso, setProgresso] = useContext(Progresso);
     const url = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/"
     const config = {
         headers: {
@@ -87,8 +89,9 @@ export default function Hoje(){
     }, [habitosDeHoje]);
 
     function atualizaContagemTarefasConcluidas(){
-        setHabitosConcluidos((habitosDeHoje.filter((habitos) => habitos.done === true)).length)
-        setPorcentagemConcluida(Math.round(((habitosDeHoje.filter((habitos) => habitos.done === true)).length * 100)/habitosDeHoje.length))
+        setHabitosConcluidos((habitosDeHoje.filter((habitos) => habitos.done === true)).length);
+        setPorcentagemConcluida(Math.round(((habitosDeHoje.filter((habitos) => habitos.done === true)).length * 100)/habitosDeHoje.length));
+        setProgresso(Math.round(((habitosDeHoje.filter((habitos) => habitos.done === true)).length * 100)/habitosDeHoje.length));
     }
     
     return (
