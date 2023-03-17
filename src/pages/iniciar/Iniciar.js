@@ -7,8 +7,8 @@ import { ThreeDots } from 'react-loader-spinner';
 import Usuario from "../../Usuario";
 
 export default function Iniciar(){
-    const [password, setPassword] = useState();
-    const [email, setEmail] = useState();
+    const [password, setPassword] = useState("");
+    const [email, setEmail] = useState("");
     const [habilitado, SetHabilitado] = useState(false);
     const [informacoesUsuario, setInformacoesUsuario] = useContext(Usuario)
 

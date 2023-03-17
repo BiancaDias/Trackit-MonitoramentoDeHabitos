@@ -79,12 +79,13 @@ export default function Habitos(){
 
 const HabitosLayout = styled.div`
     background-color: #f2f2f2;;
-    height: 100vh;
+    height: calc(100vh - 140px);
     margin-top: 70px;
     display: flex;
     flex-direction: column;
     align-items: center;
     padding: 28px 18px 70px 18px ;
+    box-sizing: border-box;
 
 `
 const TopoPagina = styled.div`

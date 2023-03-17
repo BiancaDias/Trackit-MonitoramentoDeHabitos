@@ -1,45 +1,114 @@
+import axios from "axios";
+import { useContext, useEffect, useState } from "react";
 import styled from "styled-components";
+import Usuario from "../../Usuario";
 import Menu from "./Menu";
 import Topo from "./Topo";
 
 export default function Hoje(){
+
+    const dayjs = require('dayjs'); // importando a biblioteca
+    const data = dayjs(); // objeto com a data atual
+    const diaDaSemana = data.day();
+    const dia = data.format('DD/MM'); // obtendo o dia no formato "DD/MM"
+    const [atualizaPag, setAtualizaPag] = useState(0);
+    const [informacoesUsuario, setInformacoesUsuario] = useContext(Usuario)
+    const [habitosDeHoje, setHabitosDeHoje] = useState([])
+    const [habitosConcluidos, setHabitosConcluidos]= useState(0);
+    const [porcentagemConcluida,setPorcentagemConcluida] = useState(0);
+    const url = "https://mock-api.bootcamp.respondeai.com.br/api/v2/trackit/habits/"
+    const config = {
+        headers: {
+            "Authorization": `Bearer ${informacoesUsuario.token}`
+        }
+    }
+    console.log(habitosConcluidos)
+    console.log(habitosDeHoje) //VERIFICANDO SE ESTÁ PEGANDO OS HABITOS DE HJ
+    useEffect(()=>{
+        const promisse = axios.get( url+"today", config);
+        promisse.then(e => {
+            setHabitosDeHoje(e.data);            
+        });
+        promisse.catch(e =>{
+            alert(e);
+        });
+    }, [atualizaPag])
+
+    let nomeDia;
+    switch (diaDaSemana){
+        case 0:
+            nomeDia = 'Domingo';
+            break;
+        case 1:
+            nomeDia = 'Segunda-feira';
+            break;
+        case 2:
+            nomeDia = 'Terça-feira';
+            break;
+        case 3:
+            nomeDia = 'Quarta-feira';
+            break;
+        case 4:
+            nomeDia = 'Quinta-feira';
+            break;
+        case 5:
+            nomeDia = 'Sexta-feira';
+            break;
+        case 6:
+            nomeDia = 'Sábado';
+            break;
+        default:
+            nomeDia = 'Dia inválido';
+            break;
+    }
+    
+    function habitoFeito(verificaSeFoiFeito, id){
+        const body = {}
+        if(!verificaSeFoiFeito){ //se é falso ou seja, não foi feito
+            const promisse = axios.post(url+id+"/check", body, config);
+            promisse.then(e => {
+                console.log("tarefa feita");
+
+                setAtualizaPag(atualizaPag+1)
+            });
+            promisse.catch(e => console.log(e.data))
+        }else{
+            const promisse = axios.post(url+id+"/uncheck", body, config);
+            promisse.then(e => {
+                console.log("tarefa desfeita");
+                setAtualizaPag(atualizaPag+1)
+            });
+            promisse.catch(e => console.log(e.data))
+        }
+
+    }
+    useEffect(() => {
+        atualizaContagemTarefasConcluidas();
+    }, [habitosDeHoje]);
+
+    function atualizaContagemTarefasConcluidas(){
+        setHabitosConcluidos((habitosDeHoje.filter((habitos) => habitos.done === true)).length)
+        setPorcentagemConcluida(Math.round(((habitosDeHoje.filter((habitos) => habitos.done === true)).length * 100)/habitosDeHoje.length))
+    }
+    
     return (
     <>
         <Topo/>
-        <HojeLayout>
-            <h1>Segunda, 17/05</h1>
-            <p>Nenhum hábito concluido ainda</p>
+        <HojeLayout concluido={porcentagemConcluida}>
+            <h1>{nomeDia}, {dia}</h1>
+            <p>{habitosConcluidos=== 0?"Nenhum hábito concluido ainda": porcentagemConcluida+"% dos hábitos concluidos"}</p>
             <ContainerHabitos>
-                <HabitosSalvos>
-                    <Habito>
-                        <h2>Ler 1 Capitulo de livro</h2>
-                        <Descri>
-                            <h3>Sequencia atual: 3 dias</h3>
-                            <h3>Seu recorde: 5 dias</h3>
-                        </Descri>
-                    </Habito>
-                    <ion-icon name="checkbox"></ion-icon>
-                </HabitosSalvos>
-                <HabitosSalvos>
-                    <Habito>
-                        <h2>Ler 1 Capitulo de livro</h2>
-                        <Descri>
-                            <h3>Sequencia atual: 3 dias</h3>
-                            <h3>Seu recorde: 5 dias</h3>
-                        </Descri>
-                    </Habito>
-                    <ion-icon name="checkbox"></ion-icon>
-                </HabitosSalvos>
-                <HabitosSalvos>
-                    <Habito>
-                        <h2>Ler 1 Capitulo de livro</h2>
-                        <Descri>
-                            <h3>Sequencia atual: 3 dias</h3>
-                            <h3>Seu recorde: 5 dias</h3>
-                        </Descri>
-                    </Habito>
-                    <ion-icon name="checkbox"></ion-icon>
-                </HabitosSalvos>
+                {habitosDeHoje.map((habito)=>{
+                   return (<HabitosSalvos feito={habito.done} key={habito.id}>
+                        <Habito>
+                            <h2>{habito.name}</h2>
+                            <Descri feito={habito.done} atual={habito.currentSequence} recorde={habito.highestSequence} >
+                                <h3>Sequencia atual: {habito.currentSequence} dias</h3>
+                                <h4>Seu recorde: {habito.highestSequence} dias</h4>
+                            </Descri>
+                        </Habito>
+                        <ion-icon onClick={()=>habitoFeito(habito.done, habito.id)} name="checkbox"></ion-icon>
+                    </HabitosSalvos>)})}
             </ContainerHabitos>
         </HojeLayout>
         <Menu/>
@@ -62,11 +131,11 @@ color: #126BA5;
     }
     p{
         font-style: normal;
-font-weight: 400;
-font-size: 17.976px;
-line-height: 22px;
-        margin-bottom: 28px;
-color: #BABABA
+    font-weight: 400;
+    font-size: 17.976px;
+    line-height: 22px;
+    margin-bottom: 28px;
+    color: ${({concluido})=> concluido>0 ? "#8FC549" : "#BABABA"};
     }
 `
 
@@ -89,7 +158,7 @@ const HabitosSalvos = styled.div`
     ion-icon{
         width: 69px;
         height: 69px;
-        color:#EBEBEB;
+        color:${({feito})=> feito===true ? "#8FC549" : "#EBEBEB"};
     }
 `
 
@@ -105,10 +174,14 @@ const Habito = styled.div`
 const Descri = styled.div`
     h3{
         font-weight: 400;
-font-size: 12.976px;
-line-height: 16px;
-
-color: #666666;
-
+        font-size: 12.976px;
+        line-height: 16px;
+        color: ${({feito})=> feito===true ? "#8FC549" : "#666666"};
+    }
+    h4{
+        font-weight: 400;
+        font-size: 12.976px;
+        line-height: 16px;
+        color: ${({atual, recorde})=> atual === recorde && recorde !==0 ? "#8FC549" : "#666666"};
     }
 `

@@ -6,10 +6,10 @@ import { Link, useNavigate } from "react-router-dom";
 import { ThreeDots } from 'react-loader-spinner';
 
 export default function Cadastro(){
-    const [email, setEmail] = useState();
-    const [name, setName] = useState();
-    const [image, setImage] = useState();
-    const [password, setPassword] = useState()
+    const [email, setEmail] = useState("");
+    const [name, setName] = useState("");
+    const [image, setImage] = useState("");
+    const [password, setPassword] = useState("")
     const navigate = useNavigate();
     const [habilitado, SetHabilitado] = useState(false);
 
