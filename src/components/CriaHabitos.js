@@ -18,14 +18,22 @@ export default function CriaHabitos({visualizaCriaHabito,setVisualizaCriaHabito,
         }
     }
     function selecionaDias(dia){
-        if(habilitado){
-            return;
+        if(diasSelecionados.includes(dia)){
+            const pos = diasSelecionados.indexOf(dia);
+            const arrayAux = diasSelecionados;
+            arrayAux.splice(pos, 1);
+            setDiasSelecionados([...arrayAux]);
+        }else{
+            setDiasSelecionados([...diasSelecionados, dia]);
         }
-        setDiasSelecionados([...diasSelecionados, dia]);
     }
 
     function salvaHabito(e){
         e.preventDefault();
+        if(nomeNovoHabito===""){
+            alert("O nome do habito não pode estar em branco")
+            return;
+        }
         setHabilitado(true)
         const body = {name: nomeNovoHabito, days: diasSelecionados};
         const promisse = axios.post(url, body, config);
@@ -54,10 +62,9 @@ export default function CriaHabitos({visualizaCriaHabito,setVisualizaCriaHabito,
                 value={nomeNovoHabito}
                 onChange={e => setNomeNovoHabito(e.target.value)}
                 disabled={habilitado}
-                required
             />
             <BotoesAgrupados >
-                {days.map((d, indice) => <Botoes data-test="habit-day" diasSelecionados={diasSelecionados} onClick={()=>selecionaDias(indice)} key={indice} id={indice}>{d}</Botoes>)}
+                {days.map((d, indice) => <Botoes disabled={habilitado} type="button" data-test="habit-day" diasSelecionados={diasSelecionados} onClick={()=>selecionaDias(indice)} key={indice} id={indice}>{d}</Botoes>)}
             </BotoesAgrupados>
             <CancelarSalvar>
                 <BotaoCancelar data-test="habit-create-cancel-btn" disabled={habilitado} onClick={cancelaAddHabito}>Cancelar</BotaoCancelar>
@@ -101,7 +108,7 @@ const CriaHabito = styled.form`
 const BotoesAgrupados= styled.div`
     display: flex;
 `
-const Botoes = styled.div`
+const Botoes = styled.button`
 
     background: ${({diasSelecionados, id})=> diasSelecionados.includes(id) ? "#CFCFCF" : "#FFFFFF"};
     border: 1px solid #D5D5D5;
