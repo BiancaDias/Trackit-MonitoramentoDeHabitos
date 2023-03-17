@@ -95,19 +95,20 @@ export default function Hoje(){
     <>
         <Topo/>
         <HojeLayout concluido={porcentagemConcluida}>
-            <h1>{nomeDia}, {dia}</h1>
-            <p>{habitosConcluidos=== 0?"Nenhum hábito concluido ainda": porcentagemConcluida+"% dos hábitos concluidos"}</p>
+            <h1 data-test="today">{nomeDia}, {dia}</h1>
+            <p data-test="today-counter">{habitosConcluidos=== 0?"Nenhum hábito concluido ainda": porcentagemConcluida+"% dos hábitos concluidos"}</p>
             <ContainerHabitos>
                 {habitosDeHoje.map((habito)=>{
-                   return (<HabitosSalvos feito={habito.done} key={habito.id}>
+                   return (
+                   <HabitosSalvos data-test="today-habit-container" feito={habito.done} key={habito.id}>
                         <Habito>
-                            <h2>{habito.name}</h2>
+                            <h2 data-test="today-habit-name">{habito.name}</h2>
                             <Descri feito={habito.done} atual={habito.currentSequence} recorde={habito.highestSequence} >
-                                <h3>Sequencia atual: {habito.currentSequence} dias</h3>
-                                <h4>Seu recorde: {habito.highestSequence} dias</h4>
+                                <h3 data-test="today-habit-sequence">Sequencia atual: {habito.currentSequence} dias</h3>
+                                <h4 data-test="today-habit-record">Seu recorde: {habito.highestSequence} dias</h4>
                             </Descri>
                         </Habito>
-                        <ion-icon onClick={()=>habitoFeito(habito.done, habito.id)} name="checkbox"></ion-icon>
+                        <ion-icon data-test="today-habit-check-btn" onClick={()=>habitoFeito(habito.done, habito.id)} name="checkbox"></ion-icon>
                     </HabitosSalvos>)})}
             </ContainerHabitos>
         </HojeLayout>
