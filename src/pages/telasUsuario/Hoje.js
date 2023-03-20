@@ -24,8 +24,6 @@ export default function Hoje(){
             "Authorization": `Bearer ${informacoesUsuario.token}`
         }
     }
-    console.log(habitosConcluidos)
-    console.log(habitosDeHoje) //VERIFICANDO SE ESTÁ PEGANDO OS HABITOS DE HJ
     useEffect(()=>{
         const promisse = axios.get( url+"today", config);
         promisse.then(e => {
@@ -69,18 +67,15 @@ export default function Hoje(){
         if(!verificaSeFoiFeito){ //se é falso ou seja, não foi feito
             const promisse = axios.post(url+id+"/check", body, config);
             promisse.then(e => {
-                console.log("tarefa feita");
-
-                setAtualizaPag(atualizaPag+1)
+                 setAtualizaPag(atualizaPag+1)
             });
-            promisse.catch(e => console.log(e.data))
+            promisse.catch(e => alert("um erro inesperado ocorreu! Por favor, atualize a página"))
         }else{
             const promisse = axios.post(url+id+"/uncheck", body, config);
             promisse.then(e => {
-                console.log("tarefa desfeita");
                 setAtualizaPag(atualizaPag+1)
             });
-            promisse.catch(e => console.log(e.data))
+            promisse.catch(e => alert("um erro inesperado ocorreu! Por favor, atualize a página"))
         }
 
     }

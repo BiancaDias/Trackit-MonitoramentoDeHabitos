@@ -20,7 +20,7 @@ export default function Habitos(){
             "Authorization": `Bearer ${informacoesUsuario.token}`
         }
     }
-    console.log(listaHabitos)
+  
     useEffect(()=>{
         const promisse = axios.get(url, config);
         promisse.then(e => {

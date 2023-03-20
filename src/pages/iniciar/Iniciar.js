@@ -25,7 +25,7 @@ export default function Iniciar(){
         })
         promisse.catch(r =>{
             SetHabilitado(false)
-            alert("deu ruim")
+            alert("u=Usuario e/ou senha incorretos! Tente novamente")
         })
     }
     return(

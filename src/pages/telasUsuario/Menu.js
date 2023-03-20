@@ -8,7 +8,7 @@ import { useContext } from 'react';
 
 export default function Menu(){
     const [progresso, setProgresso] = useContext(Progresso);
-    console.log(progresso)
+ 
     return(
         <MenuLayout data-test="menu">
             <Link data-test="habit-link" to="/habitos"><Botao>Hábitos</Botao></Link>

@@ -25,7 +25,7 @@ export default function Cadastro(){
             navigate("/")})
         promisse.catch(r =>{ 
             SetHabilitado(false)
-            alert("deu ruim")})
+            alert("Usuario já cadastro! Faça login")})
     }
 
     return(
