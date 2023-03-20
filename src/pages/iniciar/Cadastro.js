@@ -4,6 +4,8 @@ import { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import { ThreeDots } from 'react-loader-spinner';
+import { Container, Formulario, Redireciona } from "./stylesCadastroLogin";
+
 
 export default function Cadastro(){
     const [email, setEmail] = useState("");
@@ -27,7 +29,7 @@ export default function Cadastro(){
     }
 
     return(
-        <ContainerCadastro >
+        <Container >
             <img src={logo} alt="Trackit"/>
             <Formulario onSubmit={cadastrar}>
                 <input 
@@ -73,73 +75,7 @@ export default function Cadastro(){
 
                 <button data-test="signup-btn" disabled={habilitado}>{habilitado === true? <ThreeDots color="#FFFFFF" height="50px" width="50px"/>: "Cadastrar"}</button>
             </Formulario>
-            <Link data-test="login-link" to={"/"}><Loguin>Já tem uma conta? Faça login!</Loguin></Link>
-        </ContainerCadastro>
+            <Link data-test="login-link" to={"/"}><Redireciona>Já tem uma conta? Faça login!</Redireciona></Link>
+        </Container>
     );
 }
-
-const ContainerCadastro = styled.div`
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    img{
-        width: 180px;
-        height: 178px;
-        margin-bottom: 33px;
-        margin-top: 68px;
-    }
-`
-
-const Formulario = styled.form`
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    input{
-        background: #FFFFFF;
-        border: 1px solid #D5D5D5;
-        border-radius: 5px;
-        width: 303px;
-        height: 45px;
-        margin-bottom: 6px;
-        margin-bottom: 6px;
-        padding-left: 11px;
-        box-sizing: border-box;
-        ::placeholder{
-            font-weight: 400;
-            font-size: 19.976px;
-            line-height: 25px;
-            color: #DBDBDB;
-            font-family: 'Lexend Deca';
-        }
-    }
-    button{
-        width: 303px;
-        height: 45px;
-        left: 36px;
-        top: 381px;
-        background: #52B6FF;
-        border-radius: 4.63636px;
-        font-style: normal;
-        font-weight: 400;
-        font-size: 20.976px;
-        line-height: 26px;
-        text-align: center;
-        color: #FFFFFF;
-        margin-bottom: 25px;
-        display: flex;
-        align-items: center;
-        justify-content: center;
-    }
-`
-
-const Loguin = styled.div`
-font-style: normal;
-font-weight: 400;
-font-size: 13.976px;
-line-height: 17px;
-text-align: center;
-text-decoration-line: underline;
-color: #52B6FF;
-margin-bottom: 200px;
-`

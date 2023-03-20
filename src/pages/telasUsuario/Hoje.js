@@ -122,24 +122,26 @@ export default function Hoje(){
 
 const HojeLayout = styled.div`
     background-color: #f2f2f2;
-    height: 100vh;
+    height: calc(100vh - 70px); 
     padding-top: 98px;
     padding-left: 17px;
     padding-right: 17px;
+    padding-bottom: 20px;
     box-sizing: border-box;
+    overflow: auto;
     h1{
         font-weight: 400;
-font-size: 22.976px;
-line-height: 29px;
-color: #126BA5;
+        font-size: 22.976px;
+        line-height: 29px;
+        color: #126BA5;
     }
     p{
         font-style: normal;
-    font-weight: 400;
-    font-size: 17.976px;
-    line-height: 22px;
-    margin-bottom: 28px;
-    color: ${({concluido})=> concluido>0 ? "#8FC549" : "#BABABA"};
+        font-weight: 400;
+        font-size: 17.976px;
+        line-height: 22px;
+        margin-bottom: 28px;
+        color: ${({concluido})=> concluido>0 ? "#8FC549" : "#BABABA"};
     }
 `
 

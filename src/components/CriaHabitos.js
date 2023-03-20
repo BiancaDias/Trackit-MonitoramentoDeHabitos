@@ -92,6 +92,7 @@ const CriaHabito = styled.form`
         height: 45px;
         margin-bottom: 8px;
         padding-left: 11px;
+        
     ::placeholder {
         width: 153px;
         height: 25px;
