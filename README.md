@@ -1,70 +1,65 @@
-# Getting Started with Create React App
+# Trackit - Monitoramento de Hábitos
+<table>
+  <tr>
+    <td align="center" style="padding: 0; margin: 0;">
+      <img src="src/images/1.jpg" width="200" alt="Imagem 1">
+    </td>
+    <td align="center" style="padding: 0; margin: 0;">
+      <img src="src/images/2.jpg" width="200" alt="Imagem 2">
+    </td>
+    <td align="center" style="padding: 0; margin: 0;">
+      <img src="src/images/3.jpg" width="200" alt="Imagem 3">
+    </td>
+    <td align="center" style="padding: 0; margin: 0;">
+      <img src="src/images/4.jpg" width="200" alt="Imagem 4">
+    </td>
+  </tr>
+</table>
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+<table>
+  <tr>
+    <td align="center" style="padding: 0; margin: 0;">
+      <img src="src/images/5.jpg" width="200" alt="Imagem 5">
+    </td>
+    <td align="center" style="padding: 0; margin: 0;">
+      <img src="src/images/6.jpg" width="200" alt="Imagem 6">
+    </td>
+    <td align="center" style="padding: 0; margin: 0;">
+      <img src="src/images/7.jpg" width="200" alt="Imagem 7">
+    </td>
+    <td align="center" style="padding: 0; margin: 0;">
+      <img src="src/images/8.jpg" width="200" alt="Imagem 8">
+    </td>
+  </tr>
+</table>
 
-## Available Scripts
+## Sobre
 
-In the project directory, you can run:
+Trackit se trata de uma aplicação completa de acompanhamento de hábitos. Nele é possível registrar um hábito, acompanhar o dia que ele deve ser feito e marcar se foi feito.
 
-### `npm start`
+Este é um projeto em React.js. Segue abaixo as instruções de configuração:
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+Certifiquse-se de ter as seguintes ferramentas instaladas e atualizadas no seu sistema: 
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+- [Node.js](https://nodejs.org/)
+- [npm](https://www.npmjs.com/)
 
-### `npm test`
+## Instalação
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Siga estas etapas para configurar e executar o projeto localmente:
 
-### `npm run build`
+```bash
+   git clone https://github.com/BiancaDias/shopper-front
+   cd shopper-front
+```
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+### 1 - Instalar as dependencias
+```bash
+  npm install
+```
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+### 2 - Execute o projeto
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
-
-### `npm run eject`
-
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
-
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+```bash
+  npm start
+```
