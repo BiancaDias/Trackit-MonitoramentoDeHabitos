@@ -37,6 +37,8 @@
 
 Trackit se trata de uma aplicação completa de acompanhamento de hábitos. Nele é possível registrar um hábito, acompanhar o dia que ele deve ser feito e marcar se foi feito.
 
+[Deploy da aplicação](https://trackit-monitoramento-de-habitos.vercel.app/)
+
 Este é um projeto em React.js. Segue abaixo as instruções de configuração:
 
 Certifiquse-se de ter as seguintes ferramentas instaladas e atualizadas no seu sistema: 
