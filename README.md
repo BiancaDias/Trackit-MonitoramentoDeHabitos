@@ -49,8 +49,8 @@ Certifiquse-se de ter as seguintes ferramentas instaladas e atualizadas no seu s
 Siga estas etapas para configurar e executar o projeto localmente:
 
 ```bash
-   git clone https://github.com/BiancaDias/shopper-front
-   cd shopper-front
+   git clone https://github.com/BiancaDias/Trackit-MonitoramentoDeHabitos
+   cd Trackit-MonitoramentoDeHabitos
 ```
 
 ### 1 - Instalar as dependencias
